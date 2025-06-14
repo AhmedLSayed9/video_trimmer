@@ -77,6 +77,8 @@ class ScrollableTrimViewer extends StatefulWidget {
 
   final int scrollStartDelay;
 
+  final int scrollingDelay;
+
   /// Widget for displaying the video trimmer.
   ///
   /// This has frame wise preview of the video with a
@@ -126,6 +128,7 @@ class ScrollableTrimViewer extends StatefulWidget {
     required this.maxVideoLength,
     required this.onThumbnailLoadingComplete,
     required this.scrollStartDelay,
+    required this.scrollingDelay,
     this.viewerWidth = 50 * 8,
     this.viewerHeight = 50,
     this.showDuration = true,
@@ -208,7 +211,7 @@ class _ScrollableTrimViewerState extends State<ScrollableTrimViewer>
 
   void startScrolling(bool isTowardsEnd) {
     _scrollingTimer =
-        Timer.periodic(const Duration(milliseconds: 300), (timer) {
+        Timer.periodic(Duration(milliseconds: widget.scrollingDelay), (timer) {
       setState(() {
         final midPoint = (_endPos.dx - _startPos.dx) / 2;
         var speedMultiplier = 1;

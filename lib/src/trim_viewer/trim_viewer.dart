@@ -96,6 +96,12 @@ class TrimViewer extends StatefulWidget {
   /// By default it is set to `300`
   final int scrollStartDelay;
 
+  /// For specifying the scrolling delay of the timeline
+  /// when dragging the trim editor in milliseconds.
+  /// 
+  /// By default it is set to `300`
+  final int scrollingDelay;
+
   /// Widget for displaying the video trimmer.
   ///
   /// This has frame wise preview of the video with a
@@ -177,6 +183,12 @@ class TrimViewer extends StatefulWidget {
   /// * [scrollStartDelay] For specifying the scroll start delay of the timeline
   /// when dragging the trim editor in milliseconds.
   /// By default it is set to `300`.
+  /// 
+  /// 
+  /// * [scrollingDelay]  For specifying the scrolling delay of the timeline
+  /// when dragging the trim editor in milliseconds.
+  /// 
+  /// By default it is set to `300`
   ///
   const TrimViewer({
     super.key,
@@ -196,6 +208,7 @@ class TrimViewer extends StatefulWidget {
     this.areaProperties = const TrimAreaProperties(),
     this.onThumbnailLoadingComplete,
     this.scrollStartDelay = 300,
+    this.scrollingDelay = 300,
   });
 
   @override
@@ -252,6 +265,7 @@ class _TrimViewerState extends State<TrimViewer> with TickerProviderStateMixin {
         }
       },
       scrollStartDelay: widget.scrollStartDelay,
+      scrollingDelay: widget.scrollingDelay,
     );
 
     final fixedTrimViewer = FixedTrimViewer(
